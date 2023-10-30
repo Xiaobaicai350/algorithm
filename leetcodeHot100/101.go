@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func defs(left *TreeNode, right *TreeNode) bool {
 	//如果根节点的左右都为空，说明是合理情况

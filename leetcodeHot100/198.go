@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func rob(nums []int) int {
 	if len(nums) == 0 {

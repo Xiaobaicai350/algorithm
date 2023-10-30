@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func jump(nums []int) int {
 	length := len(nums)

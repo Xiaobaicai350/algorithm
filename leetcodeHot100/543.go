@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func diameterOfBinaryTree(root *TreeNode) (ans int) {
 	var dfs func(*TreeNode) int

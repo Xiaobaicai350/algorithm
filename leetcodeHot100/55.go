@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func canJump(nums []int) bool {
 	//cover表示从当前节点能走到最远的位置

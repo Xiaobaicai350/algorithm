@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func climbStairs(n int) int {
 	//如果n为1，说明只有一种方法

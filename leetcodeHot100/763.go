@@ -1,4 +1,4 @@
-package leetcode
+package leetcodeHot100
 
 func partitionLabels(s string) (partition []int) {
 	//初始化数组用来存储每一个字符最后出现的位置
