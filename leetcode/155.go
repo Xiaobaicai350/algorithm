@@ -45,10 +45,3 @@ func (this *MinStack) Top() int {
 func (this *MinStack) GetMin() int {
 	return this.minStack[len(this.minStack)-1]
 }
-func min(x, y int) int {
-	if x < y {
-		return x
-	} else {
-		return y
-	}
-}
