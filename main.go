@@ -1,16 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-type User struct {
-	Name string
+func numSquares(n int) int {
+	//创建数组切片
+	dp := make([]int, n+1)
+	for i := 1; i <= n; i++ {
+		minn := math.MaxInt32
+		for j := 1; j*j <= i; j++ {
+			minn = min(minn, dp[i-j*j])
+		}
+		dp[i] = minn + 1
+	}
+	return dp[n]
 }
-
 func main() {
-
-	var user1 User
-	user2 := new(User)
-	fmt.Println(user1)
-	fmt.Println(user2)
-
+	squares := numSquares(12)
+	fmt.Printf("%d", squares)
 }
