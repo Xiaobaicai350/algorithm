@@ -9,6 +9,11 @@ type ListNode struct {
 	Val  int
 	Next *ListNode
 }
+type Node struct {
+	Val    int
+	Next   *Node
+	Random *Node
+}
 
 func max(a, b int) int {
 	if a > b {
