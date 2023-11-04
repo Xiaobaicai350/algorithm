@@ -20,7 +20,7 @@ func sortList(head *ListNode) *ListNode {
 	//断开前半部分跟后半部分的连接
 	left.Next = nil
 	//递归，注意返回的是排序后的头节点
-	l := sortList(head)·
+	l := sortList(head)
 	r := sortList(mid)
 	res := &ListNode{Val: 0}
 	ans := res
