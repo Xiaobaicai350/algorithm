@@ -9,7 +9,7 @@ var path []int
 // 标记这个数字是否被使用了
 var used []bool
 
-func permute(nums []int) [][]int {
+func Permute(nums []int) [][]int {
 	ans = make([][]int, 0)
 	path = make([]int, 0, len(nums))
 	used = make([]bool, len(nums))
@@ -18,10 +18,10 @@ func permute(nums []int) [][]int {
 }
 func dfs_premute(nums []int, idx int) {
 	if idx == len(nums) {
-		//这里不知道为什么要新建一个来存放path，和其他语言不太一样
+		//这里为什么要新建一个tmp的原因是，如果把path都传入进ans里面，保存的其实是一个地址，所以要传入一个新的对象，防止修改
 		tmp := make([]int, len(path))
 		copy(tmp, path)
-		ans = append(ans, tmp)
+		ans = append(ans, path)
 		return
 	}
 	for i := 0; i < len(nums); i++ {
