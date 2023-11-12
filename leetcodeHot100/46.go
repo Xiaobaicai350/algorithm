@@ -9,7 +9,7 @@ var path []int
 // 标记这个数字是否被使用了
 var used []bool
 
-func Permute(nums []int) [][]int {
+func permute(nums []int) [][]int {
 	ans = make([][]int, 0)
 	path = make([]int, 0, len(nums))
 	used = make([]bool, len(nums))
