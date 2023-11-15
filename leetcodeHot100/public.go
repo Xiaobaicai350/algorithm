@@ -28,3 +28,13 @@ func min(a, b int) int {
 	}
 	return b
 }
+func BubbleSort(arr []int, start int, end int) []int {
+	for i := start; i < end-1; i++ {
+		for j := start; j < end-i-1+start; j++ {
+			if arr[j] > arr[j+1] {
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+			}
+		}
+	}
+	return arr
+}
