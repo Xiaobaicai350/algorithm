@@ -1,15 +1,17 @@
 package leetcodeHot100
 
-func inorderTraversal(root *TreeNode) (res []int) {
-	var inorder func(node *TreeNode)
-	inorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		inorder(node.Left)
-		res = append(res, node.Val)
-		inorder(node.Right)
-	}
+var resArr []int
+
+func inorderTraversal(root *TreeNode) []int {
+	resArr = make([]int, 0)
 	inorder(root)
-	return
+	return resArr
+}
+func inorder(node *TreeNode) {
+	if node == nil {
+		return
+	}
+	inorder(node.Left)
+	resArr = append(resArr, node.Val)
+	inorder(node.Right)
 }
