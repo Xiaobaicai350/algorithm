@@ -25,6 +25,8 @@ func rightSideView(root *TreeNode) []int {
 			if node.Right != nil {
 				queue.PushBack(node.Right)
 			}
+			//和102题不一样的地方在这里
+			//只有当在每一层的最后一个元素的时候才加入到返回结果集中，其他的不加
 			if i == length-1 {
 				res = append(res, node.Val)
 			}
