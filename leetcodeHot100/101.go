@@ -1,5 +1,6 @@
 package leetcodeHot100
 
+// defs函数的功能是判断以left为左子树和以right为右子树的是否为对称二叉树
 func defs(left *TreeNode, right *TreeNode) bool {
 	//如果根节点的左右都为空，说明是合理情况
 	if left == nil && right == nil {
@@ -17,6 +18,7 @@ func defs(left *TreeNode, right *TreeNode) bool {
 	//递归遍历外侧树和内侧树，他们俩必须也得都是true
 	return defs(left.Left, right.Right) && defs(left.Right, right.Left)
 }
+
 func isSymmetric(root *TreeNode) bool {
 	return defs(root.Left, root.Right)
 }
