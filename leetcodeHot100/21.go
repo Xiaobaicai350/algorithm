@@ -1,5 +1,6 @@
 package leetcodeHot100
 
+// 合并两个有序的链表，思路其实就是用两个指针分别指向这两个链表，然后进行遍历到新链表，注意边界问题就可以了
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	//新链表的头节点
 	var newHead = &ListNode{Val: 0}
