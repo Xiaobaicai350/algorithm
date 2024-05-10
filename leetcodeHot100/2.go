@@ -24,8 +24,11 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			sum += l2.Val
 			l2 = l2.Next
 		}
+		//新给结果集加节点
 		cur.Next = &ListNode{Val: sum % 10}
+		//指针后移
 		cur = cur.Next
+		//查看是否需要进位
 		sum /= 10
 	}
 	return dummyNode.Next
