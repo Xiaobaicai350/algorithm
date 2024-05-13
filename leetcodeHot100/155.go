@@ -9,7 +9,7 @@ type MinStack struct {
 	minStack []int
 }
 
-func Constructor() MinStack {
+func ConstructorMinStack() MinStack {
 	return MinStack{
 		//定义切片，模拟出栈的效果
 		stack: []int{},
