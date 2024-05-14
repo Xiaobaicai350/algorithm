@@ -4,9 +4,7 @@ func copyRandomList(head *Node) *Node {
 	//创建map，用来保存原节点和我们复制的节点的对应关系
 	hashMap := make(map[*Node]*Node)
 	//新建个当前遍历的节点
-
 	cur := head
-
 	for cur != nil {
 		//存储原节点和新节点的对应关系
 		hashMap[cur] = &Node{Val: cur.Val}
