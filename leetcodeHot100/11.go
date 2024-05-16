@@ -1,23 +1,23 @@
 package leetcodeHot100
 
 func maxArea(height []int) int {
-	//用来记录结果
+	//结果集，存储最大的面积
 	ans := 0
-	//定义左指针
+	//定义左右指针，指向数组的两边的下标
 	left := 0
-	//定义右指针
 	right := len(height) - 1
+	//当左右指针相遇的时候会退出循环
 	for left < right {
-		//记录当前能装的最大容量 = 短板的高度*长度
-		currentAns := min(height[left], height[right]) * (right - left)
-		//记录一下最大值
-		ans = max(ans, currentAns)
-		//移动一下短板，如果是左边的板短，就移动左边，右边同理
-		if height[left] < height[right] {
+		if height[left] < height[right] { //如果右边的高度比较高
+			//取短板作为自己的高
+			ans = max(ans, height[left]*(right-left))
+			//移动短板，这样的话才有可能会有更大的面积
 			left++
 		} else {
+			ans = max(ans, height[right]*(right-left))
 			right--
 		}
 	}
+	//返回结果
 	return ans
 }
