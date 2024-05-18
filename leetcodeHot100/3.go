@@ -5,8 +5,9 @@ func lengthOfLongestSubstring(s string) int {
 	left := 0
 	right := 0
 	res := 0
-	//注意这里的退出条件是right超过界限,因为right是右指针，只有他可能超出界限，如果他超出界限之后才能找到最大值
-	for left < len(s) && right < len(s) {
+	//注意这里的退出条件是right超过界限,因为right是右指针，只有他可能超出界限
+	//right==len(s)的时候，res会记录最大值
+	for right < len(s) {
 		if _, ok := set[s[right]]; !ok { //如果set中不存在s[right]，说明可以让窗口扩大
 			set[s[right]] = struct{}{}
 			right++
