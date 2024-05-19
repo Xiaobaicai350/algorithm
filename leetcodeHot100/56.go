@@ -29,7 +29,7 @@ func merge(intervals [][]int) [][]int {
 			right = max(right, intervals[i][1])
 		}
 	}
-	// 最后一个要手动加入到集合中，不管是冲不重叠都得手动添加
+	// 最后一个要手动加入到集合中，不管是重不重叠都得手动添加
 	res = append(res, []int{left, right})
 	return res
 }
