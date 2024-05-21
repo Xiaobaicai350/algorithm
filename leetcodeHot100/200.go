@@ -8,13 +8,13 @@ func numIslands(grid [][]byte) int {
 		return 0
 	}
 	//得到row和col
-	nr, nc := len(grid), len(grid[0])
+	row, col := len(grid), len(grid[0])
 
 	var dfs func(grid [][]byte, r, c int)
-	//给dfs函数赋值
+	//dfs 用来把这个下标下的上下左右方位都修改成0，防止重复计数
 	dfs = func(grid [][]byte, r, c int) {
 		//如果访问的越界，或者访问的为0，就跳出去。ps:第一行检验越界，第二行检验是否为0
-		if r < 0 || c < 0 || r >= nr || c >= nc ||
+		if r < 0 || c < 0 || r >= row || c >= col ||
 			grid[r][c] == '0' {
 			return
 		}
@@ -26,9 +26,10 @@ func numIslands(grid [][]byte) int {
 		dfs(grid, r, c-1)
 		dfs(grid, r, c+1)
 	}
+
 	//遍历整个二维数组
-	for r := 0; r < nr; r++ {
-		for c := 0; c < nc; c++ {
+	for r := 0; r < row; r++ {
+		for c := 0; c < col; c++ {
 			if grid[r][c] == '1' {
 				res++
 				dfs(grid, r, c)
