@@ -3,7 +3,7 @@ package leetcodeHot100
 import "container/list"
 
 func levelOrder(root *TreeNode) [][]int {
-	res := [][]int{}
+	var res [][]int
 	if root == nil {
 		//如果整棵树都为空，直接返回空数组
 		return res
