@@ -6,7 +6,7 @@ func maxProfit(prices []int) int {
 	//第1天卖出股票，获得最大利润是0
 	dp[0] = 0
 	buy := prices[0]
-	for i := 1; i <= len(prices); i++ {
+	for i := 1; i < len(prices); i++ {
 		//计算利润
 		profit := prices[i] - buy
 		dp[i] = max(profit, dp[i-1])
