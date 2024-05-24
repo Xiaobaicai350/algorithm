@@ -5,7 +5,7 @@ func spiralOrder(matrix [][]int) []int {
 	m := len(matrix)
 	//列数
 	n := len(matrix[0])
-	//定义上下左右
+	//定义上下左右边界
 	up := 0
 	down := m - 1
 	left := 0
