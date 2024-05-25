@@ -29,7 +29,7 @@ func levelOrder(root *TreeNode) [][]int {
 		}
 		//将每一层的结果放入结果集
 		res = append(res, tmpArr)
-		//重新将结果集置为空
+		//重新将结果集置为空，方便下次复用
 		tmpArr = nil
 	}
 	return res
