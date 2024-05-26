@@ -1,32 +1,37 @@
 package leetcodeHot100
 
+// longestPalindrome 函数用于寻找字符串s中的最长回文子串
 func longestPalindrome(s string) string {
-	//创建dp数组，dp[i][j]的含义是：字符串从第i位下标到第j位下标是否是回文串
-	dp := make([][]bool, len(s))
-	//初始化结果(最小的回文就是单个字符)
-	//也就是初始化字符串的第一位为结果
-	result := s[0:1]
-	for i := 0; i < len(s); i++ {
-		//给一维数组分配空间
-		dp[i] = make([]bool, len(s))
-		// 给对角线上都初始化为true
-		dp[i][i] = true // 根据case 1 初始数据
+	if s == "" {
+		return "" // 如果字符串为空，直接返回空串
 	}
-	for length := 2; length <= len(s); length++ { //长度固定，不断移动起点
-		for start := 0; start < len(s)-length+1; start++ { //长度固定，不断移动起点
-			end := start + length - 1
-			if s[start] != s[end] { //首尾不同则不可能为回文
-				continue
-			} else if length < 3 {
-				//长度为2的字符串首尾相同就是回文
-				dp[start][end] = true
-			} else {
-				dp[start][end] = dp[start+1][end-1] //状态转移
-			}
-			if dp[start][end] && (end-start+1) > len(result) { //记录最大值
-				result = s[start : end+1]
-			}
+	start, end := 0, 0 // 初始化最长回文子串的起始和结束位置
+	for i := 0; i < len(s); i++ {
+		// 对每个字符，分别以它为中心或者以它和它下一个字符为中心进行扩展
+		left1, right1 := expandAroundCenter(s, i, i)   // 它为中心进行扩展
+		left2, right2 := expandAroundCenter(s, i, i+1) // 以它和它下一个字符为中心进行扩展
+		// 更新这两个结果中最大的end和start
+		if right1-left1 > end-start {
+			start, end = left1, right1
+		}
+		if right2-left2 > end-start {
+			start, end = left2, right2
 		}
 	}
-	return result
+	// 返回最长回文子串
+	return s[start : end+1]
+}
+
+// expandAroundCenter函数用于从中心向外扩展，寻找以left和right为中心的最长回文子串
+func expandAroundCenter(s string, left, right int) (int, int) {
+	for {
+		//当到达边界或者不等于的时候就退出循环
+		if left < 0 || right >= len(s) || s[left] != s[right] {
+			break
+		}
+		left--
+		right++
+	}
+	// 这时候退出循环了，可以返回边界了
+	return left + 1, right - 1
 }
