@@ -12,6 +12,7 @@ func mergeInt(nums1 []int, m int, nums2 []int, n int) {
 			p2++
 		}
 	}
+	//说明已经遍历完其中的一个数组了
 	if p1 == m {
 		sorted = append(sorted, nums2[p2:]...)
 	}
