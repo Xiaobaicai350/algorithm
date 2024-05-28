@@ -25,6 +25,7 @@ func addStrings(num1 string, num2 string) string {
 		}
 		result := x + y + add
 		//把个位上的信息都保存下来，添加到原来字符串的前面
+		//strconv.Itoa的作用是把数字转换成字符串
 		ans = strconv.Itoa(result%10) + ans
 		//保存进位信息
 		add = result / 10
