@@ -10,7 +10,7 @@ func maxSubArray(nums []int) int {
 		//dp[i]是由dp[i-1]推导出来的
 		if dp[i-1] >= 0 { //如果前面那个dp大于等于0的话，可以直接复用一下
 			dp[i] = dp[i-1] + nums[i]
-		} else { //如果是小于0的话，就没必要服用了，直接用nums[i]就好了
+		} else { //如果是小于0的话，就没必要复用了。因为要找最大的肯定不加一个负数呀，直接用nums[i]就好了
 			dp[i] = nums[i]
 		}
 		maxVal = max(dp[i], maxVal)
