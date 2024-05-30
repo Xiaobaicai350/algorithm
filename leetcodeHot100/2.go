@@ -2,7 +2,7 @@ package leetcodeHot100
 
 /*
 不能用转换成int或者long型的数字的方法，因为这种方法会受限于int和long的数据类型的长度，并且只能跑过99%的测试用例。。。。
-这种方法其实就是模拟了加法进位，然后不用考虑会超过int和long，因为两个个位数相加不可能大于20，相对于超过int还远呢
+这种方法其实就是模拟了加法进位，然后不用考虑会超过int和long，因为两个个位数相加不可能大于20，相对于超过int还远呢。
 */
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	//定义虚拟头结点，存储结果
