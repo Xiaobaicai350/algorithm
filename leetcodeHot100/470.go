@@ -1,9 +1,28 @@
 package leetcodeHot100
 
+import "math/rand"
+
 func rand10() int {
-	return (rand7()+rand7()+rand7()+rand7()+rand7()+rand7()+rand7()+rand7()+rand7()+rand7())%10 + 1
+	// ①已知 rand7()可以等概率生成1~7；
+	// ②那么rand7()-1可以等概率生成0~6；
+	// ③那么（rand7()-1）* 7 可以等概率生成{0, 7, 14, 21, 28, 35, 42};
+	// ④那么（rand7()-1）* 7 + rand7()可以等概率生成1~49。
+
+	// 现在我们实现了等概率生成1~49的功能，我们规定如果生成的数大于40，
+	// 我们只要生成在1~40之间的数，这样我们就可以生成1~40的等概率分布。
+
+	// 再接着，我们用（1~40）%10，就可以得到0~9
+	// 最后，（1~40）%10 + 1 ，就可以得到1~10了。
+	ans := 0
+	for {
+		ans = (rand7()-1)*7 + rand7()
+		if ans <= 40 {
+			break
+		}
+	}
+	return 1 + ans%10
 }
 
 func rand7() int {
-	return 0
+	return rand.Intn(7) + 1
 }
