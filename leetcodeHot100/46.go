@@ -10,18 +10,19 @@ var path []int
 var used []bool
 
 func permute(nums []int) [][]int {
+	//注意这三个切片的创建参数
 	ans = make([][]int, 0)
 	path = make([]int, 0, len(nums))
 	used = make([]bool, len(nums))
-	dfs_premute(nums, 0)
+	dfsPermute(nums, 0)
 	return ans
 }
-func dfs_premute(nums []int, idx int) {
+func dfsPermute(nums []int, idx int) {
 	if idx == len(nums) {
 		//这里为什么要新建一个tmp的原因是，如果把path都传入进ans里面，保存的其实是一个地址，所以要传入一个新的对象，防止修改
 		tmp := make([]int, len(path))
 		copy(tmp, path)
-		ans = append(ans, path)
+		ans = append(ans, tmp)
 		return
 	}
 	for i := 0; i < len(nums); i++ {
@@ -29,7 +30,7 @@ func dfs_premute(nums []int, idx int) {
 		if !used[i] {
 			path = append(path, nums[i])
 			used[i] = true
-			dfs_premute(nums, idx+1)
+			dfsPermute(nums, idx+1)
 			used[i] = false
 			path = path[:len(path)-1]
 		}
