@@ -1,42 +1,49 @@
 package sort
 
-/*
-	快速排序的名字起的是简单粗暴，因为一听到这个名字你就知道它存在的意义，就是快，而且效率高！它是处理大数据最快的排序算法之一了
+import "math/rand"
 
-以下是快速排序的基本步骤：
-
-	选择基准元素：从数组中选择一个元素作为基准（通常选择第一个元素、最后一个元素或者随机选择）。
-	划分：将数组中小于基准元素的元素移到基准元素的左边，大于基准元素的元素移到右边。通常使用两个指针来实现这一步骤，一个从数组的左端开始，一个从右端开始，然后它们向中间移动，直到它们相遇。
-	递归排序：递归地对划分后的左右两个子数组进行排序。
-	合并：无需合并，因为排序是原地进行的。
-	递归终止条件：当子数组的大小为0或1时，递归停止。
-*/
 func quickSortMain(arr []int) {
-	quickSort(arr, 0, len(arr)-1)
-}
-func quickSort(arr []int, left int, right int) {
-	if left < right {
-		partitionIndex := partition(arr, left, right)
-		quickSort(arr, left, partitionIndex-1)  // 对分区左侧的数组进行快速排序
-		quickSort(arr, partitionIndex+1, right) // 对分区右侧的数组进行快速排序
-	}
+	quickSort(arr)
 }
 
-// 这个方法会对基准值的两边进行划分，返回的是基准值的最终位置
-func partition(arr []int, left int, right int) int {
-	// 设定基准值（pivot）为最左边的那个元素
-	pivot := left
-	//最左边的下一个元素的下标
-	index := pivot + 1
-	for i := index; i <= right; i++ {
-		//如果
-		if arr[i] < arr[pivot] {
-			arr[i], arr[index] = arr[index], arr[i]
-			index++
+func quickSort(nums []int) {
+	// 获取数组的长度。
+	n := len(nums)
+	// 如果数组长度小于或等于1，无需排序，直接返回。
+	if n <= 1 {
+		return
+	}
+
+	// 随机选择一个索引作为基准值，以优化性能，避免在近乎有序的数组中的性能退化。
+	pivotIndex := rand.Intn(n)
+	// 将随机选中的基准值交换到数组第一个位置。
+	nums[0], nums[pivotIndex] = nums[pivotIndex], nums[0]
+
+	// 选择数组的第一个元素作为基准值。
+	pivot := nums[0]
+	left, right := -1, n
+
+	for left < right {
+		//交换后左右指针需要同时往中间移动一位
+		left++
+		right--
+		for nums[left] < pivot {
+			left++
+		}
+		for nums[right] > pivot {
+			right--
+		}
+		//这时left指向从左到右第一个比基准值大的元素
+		//right指向从右到左第一个比基准值小的元素
+		if left < right {
+			nums[left], nums[right] = nums[right], nums[left]
 		}
 	}
-	// 将基准值放置到正确的位置，也就是index-1的位置，因为index左边都是比他小的
-	arr[pivot], arr[index-1] = arr[index-1], arr[pivot]
-	// 返回基准值的最终位置
-	return pivot
+
+	//退出上面的循环后，基准的左边都是比基准小的元素，右边都是比基准大的元素
+	//这时left==right
+	// 递归地对基准值左边部分的数组进行快速排序。
+	quickSort(nums[:right+1])
+	// 递归地对基准值右边部分的数组进行快速排序。
+	quickSort(nums[right+1:])
 }
